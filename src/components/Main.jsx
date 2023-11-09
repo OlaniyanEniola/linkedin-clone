@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import PhotoIcon from '../assets/images/photo.svg'
+import CameraIcon from '../assets/images/camera.svg'
 import VideoIcon from '../assets/images/video.svg'
 import EventIcon from '../assets/images/event.svg'
 import WriteIcon from '../assets/images/write.svg'
@@ -10,18 +10,44 @@ import LikeIcon from '../assets/images/like.svg'
 import DislikeIcon from '../assets/images/dislike.svg'
 import ShareIcon from '../assets/images/share.svg'
 import CommentIcon from '../assets/images/comment.svg'
+import PostModal from './PostModal'
+
+import { useState } from "react";
 
 const Main = () => {
+
+  const [showModal, setshowModal] = useState('close');
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    if(e.target != e.currentTarget) {
+      return;
+    }
+
+    switch(showModal) {
+      case 'open':
+        setshowModal('close');
+        break;
+      case 'close':
+        setshowModal('open');
+        break;
+      default:
+        setshowModal('close');
+        break;
+    }
+  }
+
   return (
     <Container>
       <ShareBox>
+        Share
         <div>
-          <button> Start a post</button>
+          <button onClick={handleClick}> Start a post</button>
         </div>
 
         <div>
           <button>
-            <img src={PhotoIcon} alt="" />
+            <img src={CameraIcon} alt="" />
             <span>photo</span>
           </button>
 
@@ -93,6 +119,7 @@ const Main = () => {
           </SocialAction>
         </Article>
       </Content>
+      <PostModal showModal={showModal} handleClick={handleClick} />
     </Container>
   );
 };
