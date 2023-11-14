@@ -10,11 +10,13 @@ import LikeIcon from '../assets/images/like.svg'
 import DislikeIcon from '../assets/images/dislike.svg'
 import ShareIcon from '../assets/images/share.svg'
 import CommentIcon from '../assets/images/comment.svg'
+import Loader from '../assets/images/spin-loading.gif'
 import PostModal from './PostModal'
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { connect } from "react-redux";
 
-const Main = () => {
+const Main = (props) => {
 
   const [showModal, setshowModal] = useState('close');
 
@@ -40,9 +42,15 @@ const Main = () => {
   return (
     <Container>
       <ShareBox>
-        Share
         <div>
-          <button onClick={handleClick}> Start a post</button>
+        {props.user && props.user.photoURL ? 
+          (<img src={props.user.photoURL} />
+          ) : (
+            <img src={UserIcon} />
+          )}
+          <div>
+            <button onClick={handleClick}> Start a post</button>
+          </div>
         </div>
 
         <div>
@@ -68,6 +76,7 @@ const Main = () => {
         </div>
       </ShareBox>
       <Content>
+        {props.loading && <img src={Loader} />}
         <Article>
           <SharedActor>
             <a>
@@ -341,4 +350,15 @@ const Content = styled.div`
   }
 `;
 
-export default Main;
+const mapStateToProps = (state) => {
+  return {
+    user: state.userState.user,
+    loading: state.articleState.loading
+  }
+}
+
+const mapDispatchToProps = (dispatch) => ({
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
