@@ -73,14 +73,14 @@ const ArtCard = styled.div`
 `;
 
 const UserInfo = styled.div`
-  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  // border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   padding: 12px 12px 16px;
   word-wrap: break-word;
   word-break: break-word;
 `;
 
 const CardBackground = styled.div`
-  background: url("../assets/images/card-bg.svg");
+  // background: url("../assets/images/card-bg.svg");
   background-position: center;
   background-size: 462px;
   height: 54px;
@@ -89,7 +89,7 @@ const CardBackground = styled.div`
 
 const Photo = styled.div`
   box-shadow: none;
-  background-image: url("../assets/images/photo.svg");
+  // background-image: url("../assets/images/share-photo.svg");
   width: 72px;
   height: 72px;
   box-sizing: border-box;
