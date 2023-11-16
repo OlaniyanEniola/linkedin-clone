@@ -2,7 +2,7 @@ import styled from "styled-components";
 import FeedIcon from '../assets/images/feed-icon.svg'
 import RightIcon from '../assets/images/Right-icon.svg'
 
-const Rightside = () => {
+const RightSection = () => {
   return (
     <Container>
       <FollowCard>
@@ -128,4 +128,4 @@ const BannerCard = styled(FollowCard)`
   }
 `;
 
-export default Rightside;
+export default RightSection;

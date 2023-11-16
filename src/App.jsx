@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { useEffect } from 'react'
 import './App.css'
 import Login from './components/Login'
-import Mainhome from './components/Mainhome'
+import Home from './components/Home'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { getUserAuth } from './actions'
 
@@ -16,7 +16,7 @@ function App(props) {
     <Router>
       <Routes>
         <Route exact path="/" element={<Login />}></Route>
-        <Route exact path="/home" element={<Mainhome />}></Route>
+        <Route exact path="/home" element={<Home />}></Route>
       </Routes>
     </Router>
   )

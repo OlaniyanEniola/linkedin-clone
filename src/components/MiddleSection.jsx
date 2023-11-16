@@ -17,7 +17,7 @@ import { getArticlesAPI } from "../actions";
 import { Container, CommonCard, ShareBox, EmptyState, Article,SharedActor, Description, SharedImg, SocialCount, SocialAction, Content } from "./styled/Main"
 import ReactPlayer from "react-player";
 
-const Main = (props) => {
+const MiddleSection = (props) => {
 
   useEffect(() => {
     props.getArticles()
@@ -175,4 +175,4 @@ const mapDispatchToProps = (dispatch) => ({
   getArticles: () => dispatch(getArticlesAPI())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, mapDispatchToProps)(MiddleSection);
