@@ -4,7 +4,7 @@ import ItemIcon from '../assets/images/item-icon.svg'
 import PlusIcon from '../assets/images/plus-icon.svg'
 import { connect } from "react-redux";
 
-const Leftside = (props) => {
+const LeftSection = (props) => {
   return (
     <Container>
       <ArtCard>
@@ -216,4 +216,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps)(Leftside);
+export default connect(mapStateToProps)(LeftSection);
