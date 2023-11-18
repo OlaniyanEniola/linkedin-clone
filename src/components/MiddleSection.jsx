@@ -13,14 +13,16 @@ import PostModal from './PostModal'
 
 import { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 import { getArticlesAPI } from "../actions";
-import { Container, CommonCard, ShareBox, EmptyState, Article,SharedActor, Description, SharedImg, SocialCount, SocialAction, Content } from "./styled/Main"
+import { Container, ShareBox, EmptyState, Article,SharedActor, Description, SharedImg, SocialCount, SocialAction, Content } from "./styled/Main"
 import ReactPlayer from "react-player";
 
-const MiddleSection = (props) => {
+const MiddleSectionComponent = (props) => {
 
   useEffect(() => {
-    props.getArticles()
+    props.getArticles();
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   const [showModal, setshowModal] = useState('close');
 
@@ -162,6 +164,14 @@ const MiddleSection = (props) => {
   );
 };
 
+MiddleSectionComponent.propTypes = {
+  user: PropTypes.shape({
+    photoURL: PropTypes.string,
+  }),
+  getArticles: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
+  articles: PropTypes.array.isRequired,
+};
 
 const mapStateToProps = (state) => {
   return {
@@ -175,4 +185,6 @@ const mapDispatchToProps = (dispatch) => ({
   getArticles: () => dispatch(getArticlesAPI())
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(MiddleSection);
+const MiddleSection = connect(mapStateToProps, mapDispatchToProps)(MiddleSectionComponent);
+
+export default MiddleSection;
